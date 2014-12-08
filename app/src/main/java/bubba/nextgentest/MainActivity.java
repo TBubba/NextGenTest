@@ -1,14 +1,12 @@
 package bubba.nextgentest;
 
-import android.content.Intent;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.Button;
-import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -18,15 +16,19 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Show loading-screen
+        getFragmentManager().beginTransaction().replace(R.id.content_frame, new GenericLoading()).commit();
+
         // Boot up
         boot();
+
+        // Go to the user-selection-screen (Done)
+        getFragmentManager().beginTransaction().replace(R.id.content_frame, new SelectUser()).commit();
     }
 
-        private void boot() {
-            // Load stuff
+    private void boot() {
+        // Load stuff
 
-        // Go on and select user (Done)
-        setContentView(R.layout.fragment_select_user); //startActivity(new Intent(getApplicationContext(), MainNavigation.class));
     }
 
     @Override

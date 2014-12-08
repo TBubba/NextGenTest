@@ -1,16 +1,20 @@
 package bubba.nextgentest;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import bubba.nextgentest.layoutplus.HorizontalLinearLayout;
 
 
 /**
@@ -65,8 +69,24 @@ public class SelectUser extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        //
+        getActivity().findViewById(R.id.continue_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+                getFragmentManager().beginTransaction().replace(R.id.content_frame, new SelectUser()).commit();
+            }
+        });
+
+        //
+        getActivity().findViewById(R.id.new_user_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+                getFragmentManager().beginTransaction().replace(R.id.content_frame, new SelectUser()).commit();
+            }
+        });
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_select_user, container, false);
     }
